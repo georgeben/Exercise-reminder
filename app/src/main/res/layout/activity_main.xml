@@ -6,10 +6,15 @@
     android:layout_height="match_parent"
     tools:context="com.kurobarabenjamingeorge.simplealarm.MainActivity">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/background"
+        android:scaleType="centerCrop"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Set alarm"
+        android:text="Set exercise reminder"
         android:layout_above="@+id/alarmToggleButton"
         android:layout_centerHorizontal="true"
         android:textSize="21sp"/>
