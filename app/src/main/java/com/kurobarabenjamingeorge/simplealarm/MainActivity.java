@@ -57,15 +57,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 String toastMessage = "";
-                long trigerTime = SystemClock.elapsedRealtime() ;
-                long repeatInterval = 10000;
+                long triggerTime = SystemClock.elapsedRealtime() + AlarmManager.INTERVAL_HOUR;
+                long repeatInterval = AlarmManager.INTERVAL_HOUR;
                 if(b){
                     alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                            trigerTime,
+                            triggerTime,
                             repeatInterval,
                             alarmPendingIntent);
                     toastMessage = "The alarm has been set";
-//                    deliverNotification(MainActivity.this);
                 }else{
                     toastMessage = "The alarm has been put off";
                     mNotificationManager.cancelAll();
