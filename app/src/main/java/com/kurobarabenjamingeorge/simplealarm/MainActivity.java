@@ -9,6 +9,7 @@ import android.os.SystemClock;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -28,23 +29,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Intent alarmIntent = new Intent(ALARM_NOTIFICATION);
-        final PendingIntent alarmPendingIntent = PendingIntent.getBroadcast(this,
-                NOTIFICATION_ID,
-                alarmIntent,
-                PendingIntent.FLAG_NO_CREATE);
+
+        alarmToggleButton = (ToggleButton) findViewById(R.id.alarmToggleButton);
 
         boolean alarmExists = (PendingIntent.getBroadcast(this,
                 NOTIFICATION_ID,
                 alarmIntent,
                 PendingIntent.FLAG_NO_CREATE) != null);
 
+        Log.i("Alarm exist", String.valueOf(alarmExists));
+
         alarmToggleButton.setChecked(alarmExists);
+
+
+        final PendingIntent alarmPendingIntent = PendingIntent.getBroadcast(this,
+                NOTIFICATION_ID,
+                alarmIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+
+
 
         mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
         final AlarmManager  alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-
-        alarmToggleButton = (ToggleButton) findViewById(R.id.alarmToggleButton);
 
         alarmToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -70,8 +77,5 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-  /*  private void deliverNotification(Context context){
 
-
-    }*/
 }
