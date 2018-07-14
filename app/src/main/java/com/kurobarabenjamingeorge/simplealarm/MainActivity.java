@@ -37,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
                 alarmIntent,
                 PendingIntent.FLAG_NO_CREATE) != null);
 
-        Log.i("Alarm exist", String.valueOf(alarmExists));
-
         alarmToggleButton.setChecked(alarmExists);
 
 
@@ -64,9 +62,9 @@ public class MainActivity extends AppCompatActivity {
                             triggerTime,
                             repeatInterval,
                             alarmPendingIntent);
-                    toastMessage = "The alarm has been set";
+                    toastMessage = getString(R.string.alarm_on);
                 }else{
-                    toastMessage = "The alarm has been put off";
+                    toastMessage = getString(R.string.alarm_off);
                     mNotificationManager.cancelAll();
                     alarmManager.cancel(alarmPendingIntent);
                 }
