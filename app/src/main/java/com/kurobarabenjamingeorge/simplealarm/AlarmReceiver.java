@@ -25,7 +25,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context)
                 .setSmallIcon(R.drawable.ic_stat_name)
                 .setContentTitle("Start walking")
-                .setContentText("Its time to start walking pal, get up!")
+                .setContentText("Its time for exercise")
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setDefaults(NotificationCompat.DEFAULT_ALL)
                 .setContentIntent(contentPendingIntent)
